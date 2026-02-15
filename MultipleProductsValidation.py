@@ -25,8 +25,15 @@ search_bar.send_keys("laptop")
 search_bar.send_keys(Keys.ENTER)
 
 products= mywait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR,"div[data-component-type='s-search-result'] h2 span")))
-
+product_names=[]
 for p in products[0:5]:
     print(p.text)
+    product_names.append(p.text)
+
+if "HP" in product_names:
+    print("HP available in these products")
+
+else:
+    print("HP not available in these products")
 driver.implicitly_wait(5)
 
